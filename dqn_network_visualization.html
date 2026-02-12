@@ -1,0 +1,349 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DQN Movie Recommender - Network Visualization</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.3);
+        }
+        h1 {
+            text-align: center;
+            color: #667eea;
+            margin-bottom: 30px;
+        }
+        .network-viz {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            overflow-x: auto;
+        }
+        .layer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 20px;
+        }
+        .layer-label {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #667eea;
+            font-size: 14px;
+        }
+        .neurons {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .neuron {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+        .neuron:hover {
+            transform: scale(1.2);
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.5);
+        }
+        .layer-stats {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 5px 0;
+            padding: 5px;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .stat-label {
+            font-weight: 600;
+            color: #495057;
+        }
+        .stat-value {
+            color: #667eea;
+            font-weight: bold;
+        }
+        .architecture {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .layer-block {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 4px solid #667eea;
+            border-radius: 4px;
+        }
+        .info-box {
+            background: #e7f3ff;
+            border: 1px solid #b3d9ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .arrow {
+            font-size: 24px;
+            color: #667eea;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧠 DQN Movie Recommender - Neural Network Architecture</h1>
+        
+        <div class="info-box">
+            <h3>📊 Network Overview</h3>
+            <div class="stat-row">
+                <span class="stat-label">Total Parameters:</span>
+                <span class="stat-value">1,370,913</span>
+            </div>
+            <div class="stat-row">
+                <span class="stat-label">Input Dimension:</span>
+                <span class="stat-value">310</span>
+            </div>
+            <div class="stat-row">
+                <span class="stat-label">Output Dimension (Actions):</span>
+                <span class="stat-value">7840</span>
+            </div>
+        </div>
+        
+        <div class="architecture">
+            <h3>🏗️ Layer-by-Layer Architecture</h3>
+
+            <div class="layer-block">
+                <h4>Layer 1: shared_dense_0</h4>
+                <div class="stat-row">
+                    <span class="stat-label">Type:</span>
+                    <span class="stat-value">Dense</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Units:</span>
+                    <span class="stat-value">512</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Activation:</span>
+                    <span class="stat-value">{'class_name': 'LeakyReLU', 'config': {'name': 'leaky_re_lu', 'trainable': True, 'dtype': 'float32', 'alpha': 0.009999999776482582}}</span>
+                </div>
+            </div>
+
+            <div class="layer-block">
+                <h4>Layer 2: bn_0</h4>
+                <div class="stat-row">
+                    <span class="stat-label">Type:</span>
+                    <span class="stat-value">BatchNormalization</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Units:</span>
+                    <span class="stat-value">512</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Activation:</span>
+                    <span class="stat-value">none</span>
+                </div>
+            </div>
+
+            <div class="layer-block">
+                <h4>Layer 3: dropout_0</h4>
+                <div class="stat-row">
+                    <span class="stat-label">Type:</span>
+                    <span class="stat-value">Dropout</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Units:</span>
+                    <span class="stat-value">512</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Activation:</span>
+                    <span class="stat-value">none</span>
+                </div>
+            </div>
+
+            <div class="layer-block">
+                <h4>Layer 4: shared_dense_1</h4>
+                <div class="stat-row">
+                    <span class="stat-label">Type:</span>
+                    <span class="stat-value">Dense</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Units:</span>
+                    <span class="stat-value">256</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Activation:</span>
+                    <span class="stat-value">{'class_name': 'LeakyReLU', 'config': {'name': 'leaky_re_lu_1', 'trainable': True, 'dtype': 'float32', 'alpha': 0.009999999776482582}}</span>
+                </div>
+            </div>
+
+            <div class="layer-block">
+                <h4>Layer 5: bn_1</h4>
+                <div class="stat-row">
+                    <span class="stat-label">Type:</span>
+                    <span class="stat-value">BatchNormalization</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Units:</span>
+                    <span class="stat-value">256</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Activation:</span>
+                    <span class="stat-value">none</span>
+                </div>
+            </div>
+
+            <div class="layer-block">
+                <h4>Layer 6: dropout_1</h4>
+                <div class="stat-row">
+                    <span class="stat-label">Type:</span>
+                    <span class="stat-value">Dropout</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Units:</span>
+                    <span class="stat-value">256</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Activation:</span>
+                    <span class="stat-value">none</span>
+                </div>
+            </div>
+
+            <div class="layer-block">
+                <h4>Layer 7: value_dense</h4>
+                <div class="stat-row">
+                    <span class="stat-label">Type:</span>
+                    <span class="stat-value">Dense</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Units:</span>
+                    <span class="stat-value">128</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Activation:</span>
+                    <span class="stat-value">{'class_name': 'LeakyReLU', 'config': {'name': 'leaky_re_lu_2', 'trainable': True, 'dtype': 'float32', 'alpha': 0.009999999776482582}}</span>
+                </div>
+            </div>
+
+            <div class="layer-block">
+                <h4>Layer 8: advantage_dense</h4>
+                <div class="stat-row">
+                    <span class="stat-label">Type:</span>
+                    <span class="stat-value">Dense</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Units:</span>
+                    <span class="stat-value">128</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Activation:</span>
+                    <span class="stat-value">{'class_name': 'LeakyReLU', 'config': {'name': 'leaky_re_lu_3', 'trainable': True, 'dtype': 'float32', 'alpha': 0.009999999776482582}}</span>
+                </div>
+            </div>
+
+            <div class="layer-block">
+                <h4>Layer 9: value_output</h4>
+                <div class="stat-row">
+                    <span class="stat-label">Type:</span>
+                    <span class="stat-value">Dense</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Units:</span>
+                    <span class="stat-value">1</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Activation:</span>
+                    <span class="stat-value">linear</span>
+                </div>
+            </div>
+
+            <div class="layer-block">
+                <h4>Layer 10: advantage_output</h4>
+                <div class="stat-row">
+                    <span class="stat-label">Type:</span>
+                    <span class="stat-value">Dense</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Units:</span>
+                    <span class="stat-value">7840</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Activation:</span>
+                    <span class="stat-value">linear</span>
+                </div>
+            </div>
+
+            <div class="layer-block">
+                <h4>Layer 11: q_values</h4>
+                <div class="stat-row">
+                    <span class="stat-label">Type:</span>
+                    <span class="stat-value">Lambda</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Units:</span>
+                    <span class="stat-value">7840</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Activation:</span>
+                    <span class="stat-value">none</span>
+                </div>
+            </div>
+
+        </div>
+        
+        <div class="info-box" style="background: #fff3cd; border-color: #ffeaa7;">
+            <h3>🎯 How It Works</h3>
+            <ol>
+                <li><strong>Input:</strong> Movie features (genres + description embeddings + rating) → User state vector</li>
+                <li><strong>Hidden Layers:</strong> Deep network learns complex patterns and user preferences</li>
+                <li><strong>Dueling Streams:</strong> 
+                    <ul>
+                        <li>Value Stream: Estimates how good the current state is</li>
+                        <li>Advantage Stream: Estimates relative value of each action</li>
+                    </ul>
+                </li>
+                <li><strong>Output:</strong> Q(s,a) values for all movies → Higher Q-value = Better recommendation</li>
+            </ol>
+        </div>
+        
+        <div class="layer-stats">
+            <h3>📥 Input Features Breakdown</h3>
+            <div class="stat-row">
+                <span class="stat-label">Genre Features (Multi-hot):</span>
+                <span class="stat-value">209 dimensions</span>
+            </div>
+            <div class="stat-row">
+                <span class="stat-label">Description Embeddings (TF-IDF + SVD):</span>
+                <span class="stat-value">100 dimensions</span>
+            </div>
+            <div class="stat-row">
+                <span class="stat-label">Rating (Normalized):</span>
+                <span class="stat-value">1 dimension</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
